@@ -121,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['phone_number'])) {
             color: #721c24;
             border: 1px solid #f5c6cb;
             border-radius: 5px;
+            z-index: 9999;
         }
 
         .my-container {
@@ -471,7 +472,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['phone_number'])) {
 
         // Function to check if the popup has already been shown today
         function isPopupShownToday() {
-            return getCookie('popup_shown_date') === date('Y-m-d');
+            return getCookie('popup_shown_date') === new Date().toDateString();
         }
 
         // Show the popup if it has not been shown today
@@ -481,7 +482,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['phone_number'])) {
 
         // Event handler for the "Accept" button
         $('#accept-cookie').on('click', function () {
-            setCookie('popup_shown_date', date('Y-m-d'), 1);
+            setCookie('popup_shown_date', new Date().toDateString(), 1);
             hideCookiePopup();
         });
 
